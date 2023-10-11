@@ -32,6 +32,4 @@ public class AuthService {
         response.setData(jwtService.generateToken(userDetails));
         return response;
     }
-
-
 }

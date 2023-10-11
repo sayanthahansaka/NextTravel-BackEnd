@@ -1,2 +1,6 @@
 UserAuthService/.mvn/
 UserAuthService/target/
+ServiceRegistry/.mvn/
+ServiceRegistry/target
+HotelService/.mvn
+HotelService/target
