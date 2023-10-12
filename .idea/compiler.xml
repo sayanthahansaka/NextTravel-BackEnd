@@ -11,6 +11,7 @@
         <module name="HotelService" />
         <module name="nexttravel (2) (com.damian)" />
         <module name="nexttravel (1) (com.sayantha)" />
+        <module name="vehicle" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -28,6 +29,7 @@
       <module name="hotel-service" options="-parameters" />
       <module name="nexttravel (2) (com.damian)" options="-parameters" />
       <module name="nexttravel (2) (com.sayantha)" options="-parameters" />
+      <module name="vehicle" options="-parameters" />
     </option>
   </component>
 </project>
