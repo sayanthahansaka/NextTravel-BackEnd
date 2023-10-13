@@ -1,8 +1,7 @@
-package com.sayantha.vehicle.vs.exception;
-
+package com.sayantha.ps.exception;
 
 import com.sayantha.hs.exception.InvalidException;
-import com.sayantha.vehicle.vs.util.ResponseUtil;
+import com.sayantha.ps.util.ResponseUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -65,7 +65,7 @@ public class HotelDetailsController {
         return new ResponseUtil(200, "Deleted successfully", null);
     }
 
-    @GetMapping(path = {"/{id}"}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping(path = {"/id"}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseUtil searchHotelByID(@PathVariable String id){
         return new ResponseUtil(200, "Search", hotelService.searchHotelByID(id));
     }
