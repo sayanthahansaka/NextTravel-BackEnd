@@ -10,6 +10,7 @@
         <module name="ServiceRegistry" />
         <module name="HotelService" />
         <module name="nexttravel (2) (com.damian)" />
+        <module name="packages" />
         <module name="nexttravel (1) (com.sayantha)" />
         <module name="vehicle" />
       </profile>
@@ -29,6 +30,7 @@
       <module name="hotel-service" options="-parameters" />
       <module name="nexttravel (2) (com.damian)" options="-parameters" />
       <module name="nexttravel (2) (com.sayantha)" options="-parameters" />
+      <module name="packages" options="-parameters" />
       <module name="vehicle" options="-parameters" />
     </option>
   </component>
