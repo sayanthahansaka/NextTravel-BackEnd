@@ -16,7 +16,6 @@ public class HotelDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int hotelID;
-
     @Column(nullable = false)
     private String hotelName;
     private String hotelCategory;
