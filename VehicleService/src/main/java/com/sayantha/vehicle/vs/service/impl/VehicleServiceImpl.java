@@ -1,6 +1,5 @@
 package com.sayantha.vehicle.vs.service.impl;
 
-import com.sayantha.vehicle.vs.dto.PackageDTO;
 import com.sayantha.vehicle.vs.entity.VehicleDetails;
 import com.sayantha.vehicle.vs.exception.NotFoundException;
 import com.sayantha.vehicle.vs.repo.VehicleRepo;
@@ -65,11 +64,5 @@ public class VehicleServiceImpl implements VehicleService {
 
 
         return modelMapper.map(vehicleRepo.findById(Integer.valueOf(id)).get(),VehicleDTO.class);
-    }
-    @Autowired
-    private RestTemplate restTemplate;
-    public PackageDTO getPackageDetails(int packageId) {
-        String packageServiceUrl = "http://PACKAGE_SERVICE_HOST:PORT/api/packages/" + packageId;
-        return restTemplate.getForObject(packageServiceUrl, PackageDTO.class);
     }
 }

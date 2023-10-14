@@ -68,29 +68,4 @@ public class PackageServiceImpl implements PackageService {
 
         return modelMapper.map(packageRepo.findById(Integer.valueOf(id)).get(),PackageDTO.class);
     }
-
-    public HotelDTO getHotelDetails(int hotelID) {
-        String hotelServiceUrl = "http://localhost:8081/api/v1/hotel/hoteladd/id" + hotelID;
-
-        return restTemplate.getForObject(hotelServiceUrl, HotelDTO.class);
-    }
-
-    public GuideDTO getGuideDetails(int guideID){
-        String guideServiceUrl = "htthiasc" + guideID;
-
-        return restTemplate.getForObject(guideServiceUrl, GuideDTO.class);
-    }
-
-    public UserDTO getUserDetails(int userID){
-        String userServiceUrl = "http://localhost:8080/api/v1/user/get" +userID;
-
-        return restTemplate.getForObject(userServiceUrl, UserDTO.class);
-    }
-
-    public VehicleDTO getVehicleDetails(int vehicleID){
-        String vehicleServiceUrl = "http://localhost:8082/api/v1/vehicle/{id}" + vehicleID;
-
-        return restTemplate.getForObject(vehicleServiceUrl, VehicleDTO.class);
-    }
-
 }

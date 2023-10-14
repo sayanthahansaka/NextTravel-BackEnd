@@ -7,16 +7,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ServiceRegistry" />
         <module name="HotelService" />
-        <module name="packages" />
         <module name="nexttravel (2) (com.damian)" />
         <module name="nexttravel (1) (com.sayantha)" />
+        <module name="ServiceRegistry" />
+        <module name="packages" />
+        <module name="guide" />
         <module name="vehicle" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="guide" target="11" />
       <module name="hotel-service" target="11" />
       <module name="nexttravel" target="11" />
       <module name="nexttravel (2)" target="11" />

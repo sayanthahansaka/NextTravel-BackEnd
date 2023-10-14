@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import javax.persistence.ElementCollection;
 import javax.validation.constraints.*;
 
 import javax.validation.constraints.NotBlank;
@@ -56,6 +58,7 @@ public class PackageDTO {
         private int userID;
 
         @NotNull(message = "Guide ID cannot be null.")
+        @ElementCollection
         private int guideID;
 
 
