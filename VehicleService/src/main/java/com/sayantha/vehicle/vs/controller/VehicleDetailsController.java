@@ -10,7 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/v1/vehicle")
+@RequestMapping("")
 @CrossOrigin
 public class VehicleDetailsController {
 
@@ -23,8 +23,8 @@ public class VehicleDetailsController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(path = "/add", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil saveVehicle(@RequestBody VehicleDTO vehicleDTO){
+    @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil saveVehicle(@RequestBody VehicleDTO vehicleDTO) {
         if (vehicleDTO.getVehicleBrand() == null) {
             throw new InvalidException("Invalid Brand Name..!");
         }
@@ -46,7 +46,7 @@ public class VehicleDetailsController {
         return new ResponseUtil(200, "Deleted successfully", null);
     }
 
-    @GetMapping(path = {"/{id}"}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping(path = {""}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseUtil searchVehicleByID(@PathVariable int id){
         return new ResponseUtil(200, "Search", vehicleService.searchVehicleByID(id));
     }

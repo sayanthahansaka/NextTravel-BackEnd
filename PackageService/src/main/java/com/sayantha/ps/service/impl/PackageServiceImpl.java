@@ -25,9 +25,6 @@ public class PackageServiceImpl implements PackageService {
     @Autowired
     private ModelMapper modelMapper;
 
-    @Autowired
-    private RestTemplate restTemplate;
-
     @Override
     public PackageDTO savePackage(PackageDTO packageDTO) {
         if (packageRepo.existsById(packageDTO.getPackageID()))

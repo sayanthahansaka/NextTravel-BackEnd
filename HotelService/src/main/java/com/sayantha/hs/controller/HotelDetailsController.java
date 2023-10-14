@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("api/v1/hotel")
+@RequestMapping("")
 @CrossOrigin
 public class HotelDetailsController {
     @Autowired
