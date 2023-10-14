@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class AppConfig {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
+
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();

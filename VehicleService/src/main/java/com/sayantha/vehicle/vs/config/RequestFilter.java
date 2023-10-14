@@ -1,4 +1,4 @@
-package com.sayantha.nexttravel.config;
+package com.sayantha.vehicle.vs.config;
 
 
 import lombok.NonNull;

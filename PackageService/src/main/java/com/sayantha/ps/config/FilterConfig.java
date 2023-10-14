@@ -1,4 +1,4 @@
-package com.sayantha.nexttravel.config;
+package com.sayantha.ps.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
