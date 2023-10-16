@@ -13,6 +13,8 @@
         <module name="payments" />
         <module name="ServiceRegistry" />
         <module name="guide" />
+        <module name="PackageDetails" />
+        <module name="packageservicea" />
         <module name="vehicle" />
       </profile>
     </annotationProcessing>
@@ -21,7 +23,6 @@
       <module name="nexttravel" target="11" />
       <module name="nexttravel (2)" target="11" />
       <module name="nexttravel (2) (com.sayantha)" target="11" />
-      <module name="PackageDetails" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -34,6 +35,7 @@
       <module name="nexttravel (2)" options="-parameters" />
       <module name="nexttravel (2) (com.damian)" options="-parameters" />
       <module name="nexttravel (2) (com.sayantha)" options="-parameters" />
+      <module name="packageservicea" options="-parameters" />
       <module name="payments" options="-parameters" />
       <module name="vehicle" options="-parameters" />
     </option>
