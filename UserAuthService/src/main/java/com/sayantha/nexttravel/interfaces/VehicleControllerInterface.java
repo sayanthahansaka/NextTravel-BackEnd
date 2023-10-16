@@ -13,7 +13,7 @@ public interface VehicleControllerInterface {
     public ResponseUtil getAllVehicles();
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(path = "/add", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveVehicle(@RequestBody VehicleDTO vehicleDTO);
 
     @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -22,7 +22,7 @@ public interface VehicleControllerInterface {
     @DeleteMapping(params = {"vehicleID"}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseUtil deleteVehicle(@RequestParam int vehicleID);
 
-    @GetMapping(path = {"/{id}"}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping(path ="/searchVehicleById", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseUtil searchVehicleByID(@PathVariable int id);
 
 //    @PutMapping(path = "/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

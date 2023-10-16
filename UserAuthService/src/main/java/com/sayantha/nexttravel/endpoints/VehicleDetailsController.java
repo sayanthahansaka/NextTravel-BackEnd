@@ -24,7 +24,7 @@ public class VehicleDetailsController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(path = "/add", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/sv", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public com.sayantha.nexttravel.response.ResponseUtil saveVehicle(@RequestBody VehicleDTO vehicleDTO){
         if (vehicleDTO.getVehicleBrand() == null) {
             throw new InvalidException("Invalid Brand Name..!");

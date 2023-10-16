@@ -10,3 +10,7 @@ PackageService/.mvn
 PackageService/traget
 GuideService/.mvn
 GuideService/target
+PaymentsService/.mvn
+PaymentsService/target
+PackageServiceA/.mvn
+PackageServiceA/target

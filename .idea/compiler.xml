@@ -10,8 +10,8 @@
         <module name="HotelService" />
         <module name="nexttravel (2) (com.damian)" />
         <module name="nexttravel (1) (com.sayantha)" />
+        <module name="payments" />
         <module name="ServiceRegistry" />
-        <module name="packages" />
         <module name="guide" />
         <module name="vehicle" />
       </profile>
@@ -21,18 +21,20 @@
       <module name="nexttravel" target="11" />
       <module name="nexttravel (2)" target="11" />
       <module name="nexttravel (2) (com.sayantha)" target="11" />
+      <module name="PackageDetails" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="HotelService" options="-parameters" />
+      <module name="PackageDetails" options="-parameters" />
       <module name="ServiceRegistry" options="-parameters" />
       <module name="guide" options="-parameters" />
       <module name="hotel-service" options="-parameters" />
       <module name="nexttravel (2)" options="-parameters" />
       <module name="nexttravel (2) (com.damian)" options="-parameters" />
       <module name="nexttravel (2) (com.sayantha)" options="-parameters" />
-      <module name="packages" options="-parameters" />
+      <module name="payments" options="-parameters" />
       <module name="vehicle" options="-parameters" />
     </option>
   </component>

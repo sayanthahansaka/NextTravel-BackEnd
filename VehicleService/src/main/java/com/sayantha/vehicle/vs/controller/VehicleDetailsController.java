@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:8080")
 public class VehicleDetailsController {
 
     @Autowired
@@ -23,7 +23,7 @@ public class VehicleDetailsController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveVehicle(@RequestBody VehicleDTO vehicleDTO) {
         if (vehicleDTO.getVehicleBrand() == null) {
             throw new InvalidException("Invalid Brand Name..!");
@@ -46,7 +46,7 @@ public class VehicleDetailsController {
         return new ResponseUtil(200, "Deleted successfully", null);
     }
 
-    @GetMapping(path = {""}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping(path ="/searchVehicleById", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseUtil searchVehicleByID(@PathVariable int id){
         return new ResponseUtil(200, "Search", vehicleService.searchVehicleByID(id));
     }
