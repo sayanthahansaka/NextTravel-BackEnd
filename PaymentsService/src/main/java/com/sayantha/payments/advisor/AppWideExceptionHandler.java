@@ -1,7 +1,8 @@
 package com.sayantha.payments.advisor;
 
 
-import com.sayantha.ps.util.ResponseUtil;
+
+import com.sayantha.payments.util.ResponseUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;

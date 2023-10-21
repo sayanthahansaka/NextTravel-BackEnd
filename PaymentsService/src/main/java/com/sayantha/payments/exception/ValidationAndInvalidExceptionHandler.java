@@ -1,7 +1,8 @@
 package com.sayantha.payments.exception;
 
+
 import com.sayantha.hs.exception.InvalidException;
-import com.sayantha.ps.util.ResponseUtil;
+import com.sayantha.payments.util.ResponseUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.ObjectError;

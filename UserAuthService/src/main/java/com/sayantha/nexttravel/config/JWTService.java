@@ -31,7 +31,7 @@ public class JWTService {
                 getBody();
     }
 
-    private Key getSecretKey() {
+    private static Key getSecretKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
         return Keys.hmacShaKeyFor(keyBytes);
 
@@ -40,7 +40,7 @@ public class JWTService {
         final Claims claims = extractAllClaims(jwtToken);
         return claimsResolver.apply(claims);
     }
-    public String generateToken(Map<String,Object> claims, UserDetails userDetails) {
+    public static String generateToken(Map<String, Object> claims, UserDetails userDetails) {
         return Jwts.builder().
                 setClaims(claims).
                 setSubject(userDetails.getUsername()).
@@ -51,7 +51,7 @@ public class JWTService {
 
 
     }
-    public String generateToken(UserDetails userDetails) {
+    public static String generateToken(UserDetails userDetails) {
         return generateToken(new HashMap<>(), userDetails);
     }
     public boolean validateToken(String jwtToken, UserDetails userDetails) {
