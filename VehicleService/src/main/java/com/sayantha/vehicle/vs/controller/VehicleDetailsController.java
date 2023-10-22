@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:8080")
 public class VehicleDetailsController {
 
+
     @Autowired
     private VehicleService vehicleService;
 
@@ -23,7 +24,7 @@ public class VehicleDetailsController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(path = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/sv", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveVehicle(@RequestBody VehicleDTO vehicleDTO) {
         if (vehicleDTO.getVehicleBrand() == null) {
             throw new InvalidException("Invalid Brand Name..!");

@@ -23,7 +23,7 @@ public class HotelDetailsController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(path = "/hoteladd",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/save",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveHotel(@RequestBody HotelDTO hotelDTO){
         if (hotelDTO.getHotelName() == null || !hotelDTO.getHotelName().matches("[A-za-z]+")) {
             throw new InvalidException("Invalid Name..!");

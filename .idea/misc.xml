@@ -8,7 +8,6 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/UserAuthService/pom.xml" />
         <option value="$PROJECT_DIR$/ServiceRegistry/pom.xml" />
         <option value="$PROJECT_DIR$/HotelService/pom.xml" />
         <option value="$PROJECT_DIR$/VehicleService/pom.xml" />
@@ -16,6 +15,7 @@
         <option value="$PROJECT_DIR$/GuideService/pom.xml" />
         <option value="$PROJECT_DIR$/PaymentsService/pom.xml" />
         <option value="$PROJECT_DIR$/PackageServiceA/pom.xml" />
+        <option value="$PROJECT_DIR$/USERAuth-Service/pom.xml" />
       </list>
     </option>
   </component>
