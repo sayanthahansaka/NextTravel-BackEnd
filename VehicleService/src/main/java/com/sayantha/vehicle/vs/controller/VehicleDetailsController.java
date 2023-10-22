@@ -1,9 +1,10 @@
 package com.sayantha.vehicle.vs.controller;
 
-import com.sayantha.hs.exception.InvalidException;
-import com.sayantha.hs.util.ResponseUtil;
+
 import com.sayantha.vehicle.vs.dto.VehicleDTO;
+import com.sayantha.vehicle.vs.exception.NotFoundException;
 import com.sayantha.vehicle.vs.service.VehicleService;
+import com.sayantha.vehicle.vs.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8080/api/v1/vehicles/")
 public class VehicleDetailsController {
 
 
@@ -27,7 +28,7 @@ public class VehicleDetailsController {
     @PostMapping(path = "/sv", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveVehicle(@RequestBody VehicleDTO vehicleDTO) {
         if (vehicleDTO.getVehicleBrand() == null) {
-            throw new InvalidException("Invalid Brand Name..!");
+            throw new NotFoundException("Invalid Brand Name..!");
         }
         return new ResponseUtil(200, "Save..!", vehicleService.saveVehicle(vehicleDTO));
     }
@@ -35,7 +36,7 @@ public class VehicleDetailsController {
     @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseUtil updateVehicle(@RequestBody VehicleDTO vehicleDTO){
         if (vehicleDTO.getVehicleBrand() == null) {
-            throw new InvalidException("Invalid Brand Name");
+            throw new NotFoundException("Invalid Brand Name");
         }
 
         return new ResponseUtil(200, "update", vehicleService.updateVehicle(vehicleDTO));

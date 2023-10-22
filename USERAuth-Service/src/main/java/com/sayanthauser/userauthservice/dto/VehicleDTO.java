@@ -15,8 +15,6 @@ import java.io.Serializable;
 @Data
 
 public class VehicleDTO implements SuperDTO, Serializable {
-    @Positive(message = "Vehicle ID should be positive.")
-    private int vehicleID;
 
     @NotBlank(message = "Vehicle brand cannot be blank.")
     private String vehicleBrand;

@@ -1,44 +1,47 @@
-//package com.sayanthauser.userauthservice.endpoints;
-//
-//import com.damian.uas.dto.GuideDTO;
-//import com.damian.uas.interfaces.GuideInterface;
-//import com.damian.uas.response.Response;
-//import jakarta.validation.Valid;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.MediaType;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.*;
-//
-//@RestController
-//@RequestMapping("api/v1/guide")
-//@CrossOrigin
-//public class GuideController {
-//    @Autowired
-//    private GuideInterface guideInterface;
-//    @PostMapping(path = "/saveGuide",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Response> saveGuide(@RequestBody @Valid GuideDTO guideDTO){
-//        return guideInterface.saveGuide(guideDTO);
-//    }
-//    @PutMapping(path = "/updateGuide",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Response> updateGuide(@RequestBody @Valid GuideDTO guideDTO){
-//        return guideInterface.updateGuide(guideDTO);
-//    }
-//    @GetMapping(path = "/getGuide",params = "guideID",produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Response> getGuide(@RequestParam("guideID")String guideID){
-//        return guideInterface.getGuide(guideID);
-//    }
-//    @DeleteMapping(path = "/deleteGuide",params = "guideID",produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Response> deleteGuide(@RequestParam("guideID")String guideID){
-//        return guideInterface.deleteGuide(guideID);
-//    }
-//    @GetMapping(path = "/getAllGuides",produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Response> getAllGuides(){
-//        return guideInterface.getAllGuides();
-//    }
-//    @GetMapping(path = "/getByName",produces = MediaType.APPLICATION_JSON_VALUE,params="guideName")
-//    public ResponseEntity<Response> getGuideBuGuideName(@RequestParam("guideName")String guideName){
-//        System.out.println("Guide Name : "+guideName);
-//        return guideInterface.getGuideBuGuideName(guideName);
-//    }
-//
-//}
+package com.sayanthauser.userauthservice.endpoints;
+
+import com.sayanthauser.userauthservice.dto.GuideDTO;
+import com.sayanthauser.userauthservice.interfaces.GuideInterface;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("api/v1/guide")
+@CrossOrigin
+public class GuideController {
+
+    @Autowired
+    private GuideInterface guideService;
+
+    @GetMapping
+    public ResponseEntity<List<GuideDTO>> getAllGuides() {
+        return ResponseEntity.ok(guideService.getAllGuides().getBody());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<GuideDTO> getGuideById(@PathVariable int id) {
+        return ResponseEntity.ok(guideService.getGuideById(id).getBody());
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<GuideDTO> createGuide(@RequestBody @Valid GuideDTO guideDTO) {
+        GuideDTO savedGuide = guideService.createGuide(guideDTO).getBody();
+        return ResponseEntity.ok(savedGuide);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<GuideDTO> updateGuide(@PathVariable int id, @RequestBody @Valid GuideDTO guideDTO) {
+        GuideDTO updatedGuide = guideService.updateGuide(id, guideDTO).getBody();
+        return ResponseEntity.ok(updatedGuide);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteGuide(@PathVariable int id) {
+        guideService.deleteGuide(id);
+        return ResponseEntity.noContent().build();
+    }
+}

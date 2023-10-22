@@ -1,29 +1,27 @@
 package com.sayanthauser.userauthservice.interfaces;
 
 import com.sayanthauser.userauthservice.dto.PackagesDTO;
-import com.sayanthauser.userauthservice.response.Response;
+import org.apache.tomcat.util.http.ResponseUtil;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @FeignClient("package-service")
 public interface PackagesInterface {
-    @PostMapping(path = "/savePackage", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Response> save(@RequestBody PackagesDTO packagesDTO);
-    @PutMapping(path = "/updatePackage", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Response> update(@RequestBody PackagesDTO packagesDTO);
-    @GetMapping(path = "/searchPackage", produces = MediaType.APPLICATION_JSON_VALUE, params = "packageID")
-    public ResponseEntity<Response> search(@RequestParam("packageID") String packageID);
-    @DeleteMapping(path = "/deletePackage", produces = MediaType.APPLICATION_JSON_VALUE, params = "packageID")
-    public ResponseEntity<Response> delete(@RequestParam("packageID") String packageID);
-    @GetMapping(path = "/getAllPackages", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Response> getAllPackages();
-    @GetMapping(path = "/getAllPackageIDs")
-    public List<String> getAllPackageIDs();
+    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
+    ResponseUtil getAllPackages();
 
-    @GetMapping(path = "/getPackageByCategory",produces = MediaType.APPLICATION_JSON_VALUE,params = "category")
-    public ResponseEntity<Response>getPackageByCategory(@RequestParam("category")String category) ;
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(path = "/add", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    ResponseUtil savePackage(@RequestBody PackagesDTO packageDTO);
+
+    @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    ResponseUtil updatePackage(@RequestBody PackagesDTO packageDTO);
+
+    @DeleteMapping(params = {"packageID"}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    ResponseUtil deletePackage(@RequestParam int packageID);
+
+    @GetMapping(path = {"/{id}"}, produces = {MediaType.APPLICATION_JSON_VALUE}) // Corrected path variable definition
+    ResponseUtil searchPackageByID(@PathVariable int id);
 }

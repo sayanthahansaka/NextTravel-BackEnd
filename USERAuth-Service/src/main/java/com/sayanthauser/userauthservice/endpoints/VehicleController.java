@@ -22,6 +22,7 @@ public class VehicleController {
 
     @PostMapping(path = "/sv", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Response> saveVehicle(@RequestBody @Valid VehicleDTO vehicleDTO) {
+        System.out.println("yummmmmmmmmm");
         return vehicleInterface.saveVehicle(vehicleDTO);
     }
 
