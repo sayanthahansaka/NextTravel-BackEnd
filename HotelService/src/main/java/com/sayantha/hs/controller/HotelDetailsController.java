@@ -7,6 +7,7 @@ import com.sayantha.hs.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -25,11 +26,11 @@ public class HotelDetailsController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/save",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveHotel(@RequestBody HotelDTO hotelDTO){
-        if (hotelDTO.getHotelName() == null || !hotelDTO.getHotelName().matches("[A-za-z]+")) {
-            throw new InvalidException("Invalid Name..!");
-        } else if (hotelDTO.getHotelContactEmail() == null){
-            throw new InvalidException("Invalid Email..!");
-        }
+//        if (hotelDTO.getHotelName() == null || !hotelDTO.getHotelName().matches("[A-za-z]+")) {
+//            throw new InvalidException("Invalid Name..!");
+//        } else if (hotelDTO.getHotelContactEmail() == null){
+//            throw new InvalidException("Invalid Email..!");
+//        }
         return new ResponseUtil(200, "Save..!", hotelService.saveHotel(hotelDTO));
     }
 
@@ -55,18 +56,13 @@ public class HotelDetailsController {
     }
 
     @DeleteMapping(params = {"hotelID"}, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseUtil deleteHotel(@RequestParam String id) {
-
-        if (!id.matches("^[1-9][0-9]*$")) {
-            throw new InvalidException("Invalid hotel ID");
-        }
-
+    public ResponseUtil deleteHotel(@RequestParam("hotelID") Integer id) {
         hotelService.deleteHotelByID(id);
         return new ResponseUtil(200, "Deleted successfully", null);
     }
 
-    @GetMapping(path = {"/id"}, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseUtil searchHotelByID(@PathVariable String id){
+    @GetMapping(path = "/id/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseUtil searchHotelByID(@PathVariable Integer id){
         return new ResponseUtil(200, "Search", hotelService.searchHotelByID(id));
     }
 

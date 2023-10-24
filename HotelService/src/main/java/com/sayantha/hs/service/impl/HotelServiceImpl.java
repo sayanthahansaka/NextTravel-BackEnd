@@ -4,6 +4,7 @@ import com.google.common.reflect.TypeToken;
 import com.sayantha.hs.dto.HotelDTO;
 import com.sayantha.hs.entity.HotelDetails;
 import com.sayantha.hs.exception.NotFoundException;
+
 import com.sayantha.hs.repo.HotelRepo;
 import com.sayantha.hs.service.HotelService;
 import org.modelmapper.ModelMapper;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -41,7 +43,7 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public void deleteHotelByID(String id) {
+    public void deleteHotelByID(Integer id) {
 
         if (!hotelRepo.existsById(Integer.valueOf(id)))
             throw new NotFoundException(id + "Hotel Doesn't Exist..!");
@@ -55,12 +57,31 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public HotelDTO searchHotelByID(String id) {
+    public HotelDTO searchHotelByID(Integer id) {
 
-        if (!hotelRepo.existsById(Integer.valueOf(id)))
-            throw new NotFoundException(id + "Hotel ID Doesn't Exist..!");
+        if (!hotelRepo.existsById(id)) {
+            throw new NotFoundException(id + " Hotel ID Doesn't Exist..!");
+        }
+        Optional<HotelDetails> hotelOptional = hotelRepo.findById(id);
 
-
-        return modelMapper.map(hotelRepo.findById(Integer.valueOf(id)).get(),HotelDTO.class);
+        if (hotelOptional.isPresent()) {
+            return modelMapper.map(hotelOptional.get(), HotelDTO.class);
+        } else {
+            throw new NotFoundException(id + " Hotel ID Doesn't Exist..!");
+        }
     }
+
+//    @Override
+//    public HotelDTO searchHotelByName(String name) {
+//
+//
+//        Optional<HotelDetails> hotelOptional = hotelRepo.findByName(name);
+//
+//        if (!hotelOptional.isPresent()) {
+//            throw new NotFoundException(name + " Hotel Doesn't Exist..!");
+//        }
+//
+//        return modelMapper.map(hotelOptional.get(), HotelDTO.class);
+//    }
+
 }

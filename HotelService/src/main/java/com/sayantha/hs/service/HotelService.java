@@ -7,8 +7,9 @@ import java.util.List;
 public interface HotelService {
     HotelDTO saveHotel(HotelDTO hotelDTO);
     HotelDTO updateHotel(HotelDTO hotelDTO);
-    void deleteHotelByID(String id);
+    void deleteHotelByID(Integer id);
+//    HotelDTO searchHotelByName(String name);
     List<HotelDTO> getAllHotel();
-    HotelDTO searchHotelByID(String id);
+    HotelDTO searchHotelByID(Integer id);
 
 }

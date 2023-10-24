@@ -10,7 +10,7 @@ import lombok.ToString;
 @Data
 @ToString
 public class HotelDTO {
-    private int hotelID;
+    private Integer hotelID;
     private String hotelName;
     private String hotelCategory;
     private String hotelLocationWithCoordinates;
