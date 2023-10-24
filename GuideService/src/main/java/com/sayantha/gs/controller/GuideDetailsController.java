@@ -1,6 +1,5 @@
 package com.sayantha.gs.controller;
 
-
 import com.sayantha.gs.entity.GuideDetails;
 import com.sayantha.gs.service.GuideDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/api/guides")
 public class GuideDetailsController {

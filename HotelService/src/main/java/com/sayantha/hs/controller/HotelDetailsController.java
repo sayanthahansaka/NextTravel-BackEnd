@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("")
-@CrossOrigin
+@RequestMapping("api/v1/hotel")
+@CrossOrigin(origins = "http://127.0.0.1:5502", allowedHeaders = "*")
 public class HotelDetailsController {
     @Autowired
     private HotelService hotelService;
 
-    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseUtil getAllHotel(){
-        return new ResponseUtil(200, "Get", hotelService.getAllHotel());
+    @GetMapping("/hotelsget")
+    public ResponseUtil getAllHotel() {
+        return new ResponseUtil(200, "Success", hotelService.getAllHotel());
     }
 
     @ResponseStatus(HttpStatus.CREATED)

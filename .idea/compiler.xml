@@ -8,9 +8,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="HotelService" />
+        <module name="UserAuthService" />
         <module name="payments" />
+        <module name="nexttravel" />
         <module name="ServiceRegistry" />
-        <module name="USERAuth-Service" />
         <module name="guide" />
         <module name="PackageDetails" />
         <module name="packageservicea" />
@@ -23,6 +24,7 @@
       <module name="nexttravel (2)" target="11" />
       <module name="nexttravel (2) (com.damian)" target="11" />
       <module name="nexttravel (2) (com.sayantha)" target="11" />
+      <module name="USERAuth-Service" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -31,6 +33,7 @@
       <module name="PackageDetails" options="-parameters" />
       <module name="ServiceRegistry" options="-parameters" />
       <module name="USERAuth-Service" options="-parameters" />
+      <module name="UserAuthService" options="-parameters" />
       <module name="guide" options="-parameters" />
       <module name="hotel-service" options="-parameters" />
       <module name="nexttravel (2)" options="-parameters" />

@@ -11,8 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("")
-@CrossOrigin(origins = "http://localhost:8080/api/v1/vehicles/")
+@RequestMapping("api/v1/vehicle")
+@CrossOrigin
 public class VehicleDetailsController {
 
 
