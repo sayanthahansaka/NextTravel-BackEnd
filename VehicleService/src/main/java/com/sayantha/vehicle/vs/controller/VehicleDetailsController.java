@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/vehicle")
-@CrossOrigin
+@CrossOrigin(origins = "http://127.0.0.1:5502", allowedHeaders = "*")
 public class VehicleDetailsController {
 
 
@@ -33,7 +33,7 @@ public class VehicleDetailsController {
         return new ResponseUtil(200, "Save..!", vehicleService.saveVehicle(vehicleDTO));
     }
 
-    @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @PutMapping(path = "/update",consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseUtil updateVehicle(@RequestBody VehicleDTO vehicleDTO){
         if (vehicleDTO.getVehicleBrand() == null) {
             throw new NotFoundException("Invalid Brand Name");
@@ -42,13 +42,14 @@ public class VehicleDetailsController {
         return new ResponseUtil(200, "update", vehicleService.updateVehicle(vehicleDTO));
     }
 
-    @DeleteMapping(params = {"vehicleID"}, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseUtil deleteVehicle(@RequestParam int vehicleID) {
+    @DeleteMapping(path = "/id/{vehicleID}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseUtil deleteVehicle(@PathVariable int vehicleID) {
         vehicleService.deleteVehicleByID(vehicleID);
         return new ResponseUtil(200, "Deleted successfully", null);
     }
 
-    @GetMapping(path ="/searchVehicleById", produces = {MediaType.APPLICATION_JSON_VALUE})
+
+    @GetMapping(path = "/id/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseUtil searchVehicleByID(@PathVariable int id){
         return new ResponseUtil(200, "Search", vehicleService.searchVehicleByID(id));
     }

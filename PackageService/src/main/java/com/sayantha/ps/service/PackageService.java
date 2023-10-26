@@ -8,9 +8,14 @@ public interface PackageService {
     PackageDTO savePackage(PackageDTO packageDTO);
     PackageDTO updatePackage(PackageDTO packageDTO);
 
-    void deletePackageByID(int id);
+    PackageDTO deletePackageByID(Integer id);
 
     List<PackageDTO> getAllPackage();
 
-   PackageDTO searchPackageByID(int id);
+   PackageDTO searchPackageByID(Integer id);
+
+
+
+
+
 }

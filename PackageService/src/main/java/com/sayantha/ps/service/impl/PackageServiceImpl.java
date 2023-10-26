@@ -10,9 +10,9 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -43,26 +43,35 @@ public class PackageServiceImpl implements PackageService {
 
 
     @Override
-    public void deletePackageByID(int id) {
-
-        if (!packageRepo.existsById(Integer.valueOf(id)))
-            throw new NotFoundException(id + "Package Doesn't Exist..!");
-
-        packageRepo.deleteById(Integer.valueOf(id));
-    }
-
-    @Override
     public List<PackageDTO> getAllPackage() {
-        return modelMapper.map(packageRepo.findAll(), new TypeToken<List<PackageDTO>>(){}.getType());
+        return modelMapper.map(packageRepo.findAll(), new TypeToken<List<PackageDTO>>() {
+        }.getType());
     }
 
+    public PackageDTO deletePackageByID(Integer id) {
+
+        if (!packageRepo.existsById(id)) {
+            throw new NotFoundException(id + " Package ID Doesn't Exist..!");
+        }
+        Optional<PackageDetails> packageDetailsOptional = packageRepo.findById(id);
+
+        if (packageDetailsOptional.isPresent()) {
+            return modelMapper.map(packageDetailsOptional.get(), PackageDTO.class);
+        } else {
+            throw new NotFoundException(id + " Hotel ID Doesn't Exist..!");
+        }
+    }
     @Override
-    public PackageDTO searchPackageByID(int id) {
+    public PackageDTO searchPackageByID(Integer id) {
+        if (!packageRepo.existsById(id)) {
+            throw new NotFoundException(id + " Package ID Doesn't Exist..!");
+        }
+        Optional<PackageDetails> packageDetailsOptional = packageRepo.findById(id);
 
-        if (!packageRepo.existsById(Integer.valueOf(id)))
-            throw new NotFoundException(id + "Package ID Doesn't Exist..!");
-
-
-        return modelMapper.map(packageRepo.findById(Integer.valueOf(id)).get(),PackageDTO.class);
+        if (packageDetailsOptional.isPresent()) {
+            return modelMapper.map(packageDetailsOptional.get(), PackageDTO.class);
+        } else {
+            throw new com.sayantha.hs.exception.NotFoundException(id + " Package ID Doesn't Exist..!");
+        }
     }
 }

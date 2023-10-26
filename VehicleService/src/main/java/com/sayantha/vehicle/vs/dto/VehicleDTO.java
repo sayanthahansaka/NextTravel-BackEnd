@@ -15,45 +15,35 @@ import javax.persistence.Column;
 
 
 public class VehicleDTO{
+    private Integer vehicleID;
 
-    @Positive(message = "Vehicle ID should be positive.")
-    private int vehicleID;
-
-    @NotBlank(message = "Vehicle brand cannot be blank.")
+    @NotBlank(message = "Vehicle brand cannot be blank")
     private String vehicleBrand;
 
-    @NotBlank(message = "Vehicle category cannot be blank.")
     private String vehicleCategory;
-
-    @NotBlank(message = "Fuel type cannot be blank.")
     private String fuelType;
-
     private boolean isHybrid;
 
-    @Pattern(regexp = "\\d+(\\.\\d{1,2})?", message = "Invalid format for fuel usage.")
+    @NotBlank(message = "Fuel usage cannot be blank")
     private String fuelUsage;
 
-    @Pattern(regexp = "\\d+", message = "Seat capacity should be a number.")
+    @NotNull(message = "Seat capacity cannot be null")
+    @Pattern(regexp = "^[0-9]+$", message = "Seat capacity must be a number")
     private String seatCapacity;
 
-    @NotBlank(message = "Vehicle type cannot be blank.")
     private String vehicleType;
-
-    @NotBlank(message = "Transmission type cannot be blank.")
     private String transmissionType;
-
-    @NotBlank(message = "Driver's name cannot be blank.")
     private String driversName;
+    private String vehicleImage;
 
-    @Pattern(regexp = "\\d{10}", message = "Driver's contact number should have 10 digits.")
+    @NotBlank(message = "Driver's contact number cannot be blank")
+    @Pattern(regexp = "^\\+[0-9]{1,3}\\.[0-9]{4,14}(?:x.+)?$", message = "Driver's contact number is not in a valid format")
     private String driversContactNumber;
 
-    @NotBlank(message = "Driver license image reference cannot be blank.")
-    private String driverLicenseImageRef;
-
+    private String driverLicenseImage;
     private String remarks;
 
-    @NotBlank(message = "Package ID cannot be blank.")
-    private String packageID;
+    private Integer packageID;
+
 }
 

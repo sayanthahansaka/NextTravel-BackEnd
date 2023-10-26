@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -12,9 +14,10 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Builder
+@Document
 public class GuideDetails {
-    private int guideID;
+  @MongoId
+  private int guideID;
     private String guideName;
     private String guideAddress;
     private int guideAge;

@@ -13,12 +13,14 @@ import javax.persistence.*;
 public class PackageDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int packageID;
-
+    private Integer packageID;
+    private Integer hotelID;
+    private Integer vehicleID;
+    private Integer userID;
+    private Integer guideID;
     private String packageCategory;
     private String travelDuration;
     private String travelArea;
-    private String remark;
     private int noOfAdults;
     private int noOfChildren;
     private int totalHeadCount;
@@ -26,8 +28,6 @@ public class PackageDetails {
     private boolean isGuideNeeded;
     private double packageValue;
     private double packagePaidValue;
-    private int hotelID;
-    private int vehicleID;
-    private int userID;
-    private int guideID;
+    private String remark;
+
 }

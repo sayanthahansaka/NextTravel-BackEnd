@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -43,7 +44,7 @@ public class VehicleServiceImpl implements VehicleService {
 
 
     @Override
-    public void deleteVehicleByID(int id) {
+    public void deleteVehicleByID(Integer id) {
 
         if (!vehicleRepo.existsById(Integer.valueOf(id)))
             throw new NotFoundException(id + "Vehicle Doesn't Exist..!");
@@ -57,12 +58,14 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public VehicleDTO searchVehicleByID(int id) {
-
-        if (!vehicleRepo.existsById(Integer.valueOf(id)))
+    public VehicleDTO searchVehicleByID(Integer id) {
+        if (!vehicleRepo.existsById(id))
             throw new NotFoundException(id + "Vehicle ID Doesn't Exist..!");
-
-
-        return modelMapper.map(vehicleRepo.findById(Integer.valueOf(id)).get(),VehicleDTO.class);
+        Optional<VehicleDetails> vehicleOptional = vehicleRepo.findById(id);
+        if (vehicleOptional.isPresent()) {
+            return modelMapper.map(vehicleOptional.get(), VehicleDTO.class);
+        } else {
+            throw new NotFoundException(id + " Hotel ID Doesn't Exist..!");
+        }
     }
 }

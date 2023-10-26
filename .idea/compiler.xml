@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="HotelService" />
+        <module name="UplodeImageService" />
         <module name="UserAuthService" />
         <module name="payments" />
         <module name="nexttravel" />
@@ -33,6 +34,7 @@
       <module name="PackageDetails" options="-parameters" />
       <module name="ServiceRegistry" options="-parameters" />
       <module name="USERAuth-Service" options="-parameters" />
+      <module name="UplodeImageService" options="-parameters" />
       <module name="UserAuthService" options="-parameters" />
       <module name="guide" options="-parameters" />
       <module name="hotel-service" options="-parameters" />

@@ -8,9 +8,9 @@ public interface VehicleService {
     VehicleDTO saveVehicle(VehicleDTO hotelDTO);
     VehicleDTO updateVehicle(VehicleDTO hotelDTO);
 
-    void deleteVehicleByID(int id);
+    void deleteVehicleByID(Integer id);
 
     List<VehicleDTO> getAllVehicle();
 
-    VehicleDTO searchVehicleByID(int id);
+    VehicleDTO searchVehicleByID(Integer id);
 }

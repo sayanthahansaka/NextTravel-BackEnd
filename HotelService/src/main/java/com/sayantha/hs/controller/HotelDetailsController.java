@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -34,7 +35,7 @@ public class HotelDetailsController {
         return new ResponseUtil(200, "Save..!", hotelService.saveHotel(hotelDTO));
     }
 
-    @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @PutMapping(path = "/update",consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseUtil updateHotel(@RequestBody HotelDTO hotelDTO){
         if (!String.valueOf(hotelDTO.getHotelID()).matches("^[1-9][0-9]*$")) {
             throw new InvalidException("Invalid hotel ID");
@@ -55,8 +56,8 @@ public class HotelDetailsController {
         return new ResponseUtil(200, "update", hotelService.updateHotel(hotelDTO));
     }
 
-    @DeleteMapping(params = {"hotelID"}, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseUtil deleteHotel(@RequestParam("hotelID") Integer id) {
+    @DeleteMapping(path = "/id/{hotelID}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseUtil deleteHotel(@PathVariable("hotelID") Integer id) {
         hotelService.deleteHotelByID(id);
         return new ResponseUtil(200, "Deleted successfully", null);
     }

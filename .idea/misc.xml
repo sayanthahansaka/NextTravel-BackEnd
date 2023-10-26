@@ -17,6 +17,7 @@
         <option value="$PROJECT_DIR$/PackageServiceA/pom.xml" />
         <option value="$PROJECT_DIR$/USERAuth-Service/pom.xml" />
         <option value="$PROJECT_DIR$/UserAuthService/pom.xml" />
+        <option value="$PROJECT_DIR$/UplodeImageService/pom.xml" />
       </list>
     </option>
   </component>

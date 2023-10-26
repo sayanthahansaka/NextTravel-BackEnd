@@ -1,4 +1,4 @@
-package com.sayantha.ps.config;
+package com.sayantha.gs.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/**").permitAll() // Accessible to everyone
-                .antMatchers("/**").hasAnyAuthority("packageAdmin","hotelAdmin") // Requires ROLE_ADMIN authority
+                .antMatchers("/**").hasAnyAuthority("guideAdmin","packageAdmin") // Requires ROLE_ADMIN authority
 //                .antMatchers("/**").hasAuthority("PDA") // Requires ROLE_ADMIN authority
                 .anyRequest().authenticated() // Any other request requires authentication
                 .and()

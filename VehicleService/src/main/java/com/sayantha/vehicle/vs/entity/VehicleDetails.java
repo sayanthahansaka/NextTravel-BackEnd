@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class VehicleDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int vehicleID;
+    private Integer vehicleID;
 
     @Column(nullable = false)
     private String vehicleBrand;
@@ -28,13 +28,13 @@ public class VehicleDetails {
     private String vehicleType;
     private String transmissionType;
     private String driversName;
+    private String vehicleImage;
 
     @Column(nullable = false)
     private String driversContactNumber;
-
-    private String driverLicenseImageRef;
+    private String driverLicenseImage;
     private String remarks;
-    private String packageID;
+    private Integer packageID;
 
 
 }
