@@ -13,4 +13,6 @@ public interface VehicleService {
     List<VehicleDTO> getAllVehicle();
 
     VehicleDTO searchVehicleByID(Integer id);
+
+    List<Integer> getAllId();
 }

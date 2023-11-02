@@ -48,7 +48,7 @@ public class PackageDetails {
 
     private double TotalPackageValue;
 
-    private Integer userID;
+    private String userID;
 
     private double packagePaidValue;
 

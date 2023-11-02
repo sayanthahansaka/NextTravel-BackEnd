@@ -12,6 +12,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/vehicle")
 @CrossOrigin(origins = "http://127.0.0.1:5500", allowedHeaders = "*")
@@ -64,4 +66,9 @@ public class VehicleDetailsController {
         Integer nextID = (currentMaxID == null) ? 1 : currentMaxID + 1;
         return ResponseEntity.ok(nextID);
     }
+    @GetMapping(path = "/allID", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public List<Integer> getAllID() {
+        return vehicleService.getAllId();
+    }
+
 }

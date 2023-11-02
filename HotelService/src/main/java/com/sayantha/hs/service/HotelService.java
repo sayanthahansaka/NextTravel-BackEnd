@@ -13,4 +13,5 @@ public interface HotelService {
     List<HotelDTO> getAllHotel();
     HotelDTO searchHotelByID(Integer id);
     NotFoundException findHotelsByPackagingID(Integer packageId);
+    List<Integer> getAllId();
 }

@@ -68,4 +68,12 @@ public class VehicleServiceImpl implements VehicleService {
             throw new NotFoundException(id + " Hotel ID Doesn't Exist..!");
         }
     }
+
+
+    @Override
+    public List<Integer> getAllId() {
+        List<Integer> allIds = vehicleRepo.getAllId();
+        System.out.println(allIds);
+        return allIds;
+    }
 }

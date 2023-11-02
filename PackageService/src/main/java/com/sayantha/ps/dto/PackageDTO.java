@@ -16,29 +16,41 @@ import java.util.Date;
 @Data
 @ToString
 public class PackageDTO {
-        private String packageDetailsID;
+        private Integer packageDetailsID;
 
+        @NotNull
         private Integer packageID;
 
-        private Integer packageCategory;
+        @NotBlank
+        private String packageCategory;
 
+        @NotNull
         private Integer hotelID;
+
+        @NotNull
         private Integer vehicleID;
 
+        @NotNull
+        @FutureOrPresent
         private Date startDuration;
 
+        @NotNull
+        @Future
         private Date endDuration;
 
-
-        private String NameGuide;
+        @Min(1)
         private int noOfDays;
 
+        @NotBlank
         private String travelArea;
 
+        @Min(0)
         private int noOfAdults;
 
+        @Min(0)
         private int noOfChildren;
 
+        @Min(1)
         private int totalHeadCount;
 
         private boolean isPetsAllowed;
@@ -47,10 +59,15 @@ public class PackageDTO {
 
         private Integer guideID;
 
-        private double TotalPackageValue;
+        private String nameGuide;
 
-        private Integer userID;
+        @DecimalMin("0.0")
+        private double totalPackageValue;
 
+        @NotBlank
+        private String userID;
+
+        @DecimalMin("0.0")
         private double packagePaidValue;
 
         private String remark;

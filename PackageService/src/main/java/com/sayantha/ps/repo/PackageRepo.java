@@ -19,4 +19,7 @@ public interface PackageRepo extends JpaRepository<PackageDetails, Integer> {
 
     List<PackageDetails> findByuserID(String userId);
 
+
+    @Query("SELECT MAX(p.packageDetailsID) FROM PackageDetails p")
+    Integer findMaxID();
 }

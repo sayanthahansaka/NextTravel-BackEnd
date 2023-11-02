@@ -21,6 +21,9 @@ public class PackageDetailsController {
     @Autowired
     private PackageService packageService;
 
+    @Autowired
+    private PackageRepo packageRepo;
+
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseUtil getAllPackages(){
         return new ResponseUtil(200, "Get", packageService.getAllPackage());
@@ -82,5 +85,12 @@ public class PackageDetailsController {
     public ResponseEntity<ResponseUtil>updateHotelPackageId(@RequestParam("oldPackageId")String oldPackageId,@RequestParam("newPackageId")String newPackageId,@RequestParam("hotelId")String hotelId) {
         return null;
     }
+    @GetMapping("/nextPackageID")
+    public ResponseEntity<Integer> getNextHotelID() {
+        Integer currentMaxID = packageRepo.findMaxID();
+        Integer nextID = (currentMaxID == null) ? 1 : currentMaxID + 1;
+        return ResponseEntity.ok(nextID);
+    }
+
 
 }

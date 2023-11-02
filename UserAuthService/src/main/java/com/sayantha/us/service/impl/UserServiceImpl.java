@@ -165,4 +165,11 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         return passwordEncoder.matches(password, storedHashedPassword);
 
     }
+
+    @Override
+    public List<String> getAllId() {
+        List<String> allIds = userRepo.getAllId();
+        System.out.println(allIds);
+        return allIds;
+    }
 }

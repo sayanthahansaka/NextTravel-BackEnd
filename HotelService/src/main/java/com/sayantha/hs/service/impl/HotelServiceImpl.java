@@ -86,6 +86,13 @@ public class HotelServiceImpl implements HotelService {
         return new NotFoundException( " Hotels Successfully recived..!");
 }
 
+    @Override
+    public List<Integer> getAllId() {
+        List<Integer> allIds = hotelRepo.getAllId();
+        System.out.println(allIds);
+        return allIds;
+    }
+
 //    @Override
 //    public HotelDTO searchHotelByName(String name) {
 //

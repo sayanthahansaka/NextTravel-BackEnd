@@ -11,7 +11,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @Data
 @Document
-@Builder
 public class GuideDetails {
     @Id
     private Integer guideID;

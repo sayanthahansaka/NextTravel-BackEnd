@@ -18,6 +18,7 @@ public interface GuideDetailsService {
     List<GuideDTO> findAllGuides();
 
     void deleteGuideById(Integer guideID);
+    List<Integer> getAllId();
 }
 
 

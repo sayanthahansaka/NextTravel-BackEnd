@@ -19,6 +19,6 @@ public class AppConfig {
         return requestTemplate -> {
             requestTemplate.header("Authorization", "Bearer " + JWTAuthFilter.JWT_TOKEN);
         };
-}
+    }
 
 }

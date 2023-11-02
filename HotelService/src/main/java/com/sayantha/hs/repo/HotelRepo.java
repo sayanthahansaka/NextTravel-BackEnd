@@ -16,4 +16,9 @@ public interface HotelRepo extends JpaRepository<HotelDetails, Integer> {
     Integer findMaxID();
 
     List<HotelDetails> findByPackageID(Integer packageID);
+
+
+    @Query("SELECT h.hotelID from HotelDetails h order by h.hotelID DESC")
+    List<Integer> getAllId();
+
 }

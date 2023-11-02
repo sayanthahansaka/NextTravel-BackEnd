@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/guides")
@@ -47,5 +49,9 @@ public class GuideDetailsController {
     public ResponseUtil deleteGuide(@PathVariable("hotelID") Integer id) {
        guideDetailsService.deleteGuideById(id);
        return new ResponseUtil(200,"Deleted successfully", null);
+    }
+    @GetMapping(path = "/allID", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public List<Integer> getAllID() {
+        return guideDetailsService.getAllId();
     }
 }

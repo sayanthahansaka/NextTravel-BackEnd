@@ -61,4 +61,11 @@ public class GuideDetailsServiceImpl implements GuideDetailsService {
         if (!guideDetailsRepository.existsById(Integer.valueOf(id)));
         throw new NotFoundException(id + "Guide Doesn't Exist..!");
     }
+
+    @Override
+    public List<Integer> getAllId() {
+        List<Integer> allIds = guideDetailsRepository.getAllId();
+        System.out.println(allIds);
+        return allIds;
+    }
 }
