@@ -20,21 +20,16 @@ import java.nio.file.Paths;
 public class UploadServiceImpl implements UploadService {
     @Override
     public String handleUploads(MultipartFile imageFile) {
-        // Getting the file name.
         String fileName = imageFile.getOriginalFilename();
 
-        // Specify the destination directory.In this case it is downloads.
         String destinationDirectory = System.getProperty("user.home") + "/Downloads";
-        // Create the directory if it doesn't exist.
         File directory = new File(destinationDirectory);
         if (!directory.exists()) {
             directory.mkdirs();
         }
 
-        // Create the file path.
         String filePath = destinationDirectory + "/" + fileName;
 
-        // Save the image file.
         try {
             imageFile.transferTo(Paths.get(filePath));
             return filePath;

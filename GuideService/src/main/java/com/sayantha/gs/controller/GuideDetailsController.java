@@ -1,48 +1,51 @@
 package com.sayantha.gs.controller;
 
-import com.sayantha.gs.entity.GuideDetails;
+import com.sayantha.gs.dto.GuideDTO;
+import com.sayantha.gs.exception.NotFoundException;
 import com.sayantha.gs.service.GuideDetailsService;
+import com.sayantha.gs.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 @RestController
 @RequestMapping("/api/guides")
+@CrossOrigin
 public class GuideDetailsController {
 
     @Autowired
     private GuideDetailsService guideDetailsService;
 
-    @GetMapping
-    public ResponseEntity<List<GuideDetails>> getAllGuides() {
-        return ResponseEntity.ok(guideDetailsService.findAllGuides());
+    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseUtil getAllGuides() {
+        return new ResponseUtil(200, "Success", guideDetailsService.findAllGuides());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<GuideDetails> getGuideById(@PathVariable int id) {
-        return guideDetailsService.findGuideById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    @GetMapping(path = "/id/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseUtil getGuideById(@PathVariable Integer id) {
+        return new ResponseUtil(200, "Search", guideDetailsService.searchGuideByID(id));
     }
 
-    @PostMapping
-    public ResponseEntity<GuideDetails> createGuide(@RequestBody GuideDetails guideDetails) {
-        return ResponseEntity.ok(guideDetailsService.saveGuide(guideDetails));
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(path = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil createGuide(@RequestBody GuideDTO guideDTO) {
+        return new ResponseUtil(200, "Save..!", guideDetailsService.saveGuide(guideDTO));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<GuideDetails> updateGuide(@PathVariable int id, @RequestBody GuideDetails guideDetails) {
-        if (id != guideDetails.getGuideID()) {
-            return ResponseEntity.badRequest().build(); // IDs don't match
-        }
-        return ResponseEntity.ok(guideDetailsService.updateGuide(guideDetails));
+
+    @PutMapping(path = "/update",consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseUtil updateGuide(@RequestBody GuideDTO guideDTO) {
+       if (guideDTO.getGuideName() == null){
+           throw new NotFoundException("Invalid Guide");
+       }
+       return new ResponseUtil(200, "update", guideDetailsService.updateGuide(guideDTO));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteGuide(@PathVariable int id) {
-        guideDetailsService.deleteGuideById(id);
-        return ResponseEntity.noContent().build();
+    @DeleteMapping(path = "/id/{guide}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseUtil deleteGuide(@PathVariable("hotelID") Integer id) {
+       guideDetailsService.deleteGuideById(id);
+       return new ResponseUtil(200,"Deleted successfully", null);
     }
 }
-

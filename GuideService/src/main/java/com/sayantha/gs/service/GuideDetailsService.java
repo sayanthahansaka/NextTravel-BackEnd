@@ -1,22 +1,23 @@
 package com.sayantha.gs.service;
 
-import com.sayantha.gs.entity.GuideDetails;
+import com.sayantha.gs.dto.GuideDTO;
+
 
 import java.util.List;
-import java.util.Optional;
+
 
 
 public interface GuideDetailsService {
 
-    GuideDetails saveGuide(GuideDetails guideDetails);
+    GuideDTO saveGuide(GuideDTO guideDTO);
 
-    Optional<GuideDetails> findGuideById(int guideID);
+    GuideDTO updateGuide(GuideDTO guideDTO);
 
-    List<GuideDetails> findAllGuides();
+    GuideDTO searchGuideByID(Integer id);
 
-    void deleteGuideById(int guideID);
+    List<GuideDTO> findAllGuides();
 
-    GuideDetails updateGuide(GuideDetails guideDetails);
+    void deleteGuideById(Integer guideID);
 }
 
 

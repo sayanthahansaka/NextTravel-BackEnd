@@ -23,7 +23,6 @@ public class User implements UserDetails, SuperEntity {
     private String userRole;
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @NonNull
     private String userId;
     @NonNull
     private String name;
@@ -37,9 +36,8 @@ public class User implements UserDetails, SuperEntity {
     private String userNICImageLocation;
     @NonNull
     private int userAge;
-    @Enumerated(EnumType.STRING)
     @NonNull
-    private GENDER gender;
+    private String gender;
     @NonNull
     private String userEmail;
     @NonNull
@@ -61,6 +59,11 @@ public class User implements UserDetails, SuperEntity {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(userRole));
     }
+
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return null;
+//    }
 
     @Override
     public String getPassword() {

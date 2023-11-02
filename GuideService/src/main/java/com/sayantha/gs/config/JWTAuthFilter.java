@@ -25,7 +25,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
     @Autowired
     private final HandlerExceptionResolver handlerExceptionResolver;
     @Autowired
-    private com.sayantha.gs.config.JWTService JWTService;
+    private JWTService JWTService;
     public static String JWT_TOKEN;
 
 

@@ -18,9 +18,10 @@ import java.util.List;
 public class PaymentsDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int paymentId;
+    private Integer paymentId;
+    private String email;
     private Date date;
     private double amount;
-    private int userId;
-    private int packageDetailsId;
+    private Integer userId;
+    private Integer packageDetailsId;
 }

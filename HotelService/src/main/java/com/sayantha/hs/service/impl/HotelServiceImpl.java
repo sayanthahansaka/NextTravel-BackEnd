@@ -9,9 +9,11 @@ import com.sayantha.hs.repo.HotelRepo;
 import com.sayantha.hs.service.HotelService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,6 +73,19 @@ public class HotelServiceImpl implements HotelService {
         }
     }
 
+    @Override
+    public NotFoundException findHotelsByPackagingID(Integer packageId) {
+        List<HotelDetails> hotels = hotelRepo.findByPackageID(packageId);
+        if (hotels.isEmpty()){
+            return new  NotFoundException(packageId + " Hotel ID Doesn't Exist..!");
+        }
+        List<HotelDTO> hotelDtos=new ArrayList<>();
+        hotels.forEach(he -> {
+            hotelDtos.add(modelMapper.map(he,HotelDTO.class));
+        });
+        return new NotFoundException( " Hotels Successfully recived..!");
+}
+
 //    @Override
 //    public HotelDTO searchHotelByName(String name) {
 //
@@ -83,5 +98,6 @@ public class HotelServiceImpl implements HotelService {
 //
 //        return modelMapper.map(hotelOptional.get(), HotelDTO.class);
 //    }
+
 
 }

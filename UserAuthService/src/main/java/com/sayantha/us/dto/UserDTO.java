@@ -39,9 +39,8 @@ public class UserDTO implements SuperDTO, Serializable {
     @NotNull(message = "Age cannot be null.")
     @Positive(message = "Age must be a positive number.")
     private int userAge;
-
     @NotNull(message = "Gender cannot be null.")
-    private GENDER gender;
+    private String gender;
     @NotNull(message = "Email cannot be null.")
     @NotBlank(message = "Email cannot be blank.")
     @Email(message = "Email should be valid.")

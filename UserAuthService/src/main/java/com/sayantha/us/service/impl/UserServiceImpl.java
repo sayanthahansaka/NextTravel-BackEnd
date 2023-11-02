@@ -144,6 +144,10 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         }
     }
 
+    public UserDetails loadUserByUserName(String userName){
+        Optional<User> user = userRepo.findByUserName(userName);
+        return user.isPresent() ? user.get() : user.orElseThrow(() -> new UsernameNotFoundException("User Not Found..!"));
+    }
     @Override
     public ResponseEntity<Response> getUserByUserName(String username,String password) {
         Optional<User> user = userRepo.findByUserName(username);

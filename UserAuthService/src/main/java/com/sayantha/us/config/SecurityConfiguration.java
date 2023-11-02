@@ -23,14 +23,15 @@ public class SecurityConfiguration {
     @Autowired
     private AuthenticationProvider authenticationProvider;
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .cors() // Add this line to enable CORS
+                .and()
                 .csrf().disable()
                 .authorizeRequests()
                 .requestMatchers("/api/v1/auth/getAuth").permitAll()
-                .requestMatchers("/**").hasAnyAuthority("user", "userAdmin", "packageDetailsAdmin", "paymentsAdmin")
+                .requestMatchers("/**").hasAnyAuthority("hotelAdmin", "userAdmin", "userAdmin", "packageDetailsAdmin", "paymentsAdmin")
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
@@ -41,6 +42,7 @@ public class SecurityConfiguration {
 
         return http.build();
     }
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -52,5 +54,5 @@ public class SecurityConfiguration {
         source.registerCorsConfiguration("/**", configuration);
 
         return source;
-}
+    }
 }

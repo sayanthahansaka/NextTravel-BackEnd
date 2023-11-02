@@ -1,19 +1,15 @@
-package com.sayantha.gs.entity;
+package com.sayantha.ps.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
+@Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Document
-@Builder
-public class GuideDetails {
-    @Id
+public class GuideDTO {
     private Integer guideID;
     private String guideName;
     private String guideAddress;

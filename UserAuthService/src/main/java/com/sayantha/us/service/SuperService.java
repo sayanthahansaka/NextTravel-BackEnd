@@ -16,5 +16,7 @@ public interface SuperService<T extends SuperDTO, ID> {
 
     ResponseEntity<Response> getAll();
 
+    ResponseEntity<Response>getUserByUserName(String userName, String password);
+
 
 }

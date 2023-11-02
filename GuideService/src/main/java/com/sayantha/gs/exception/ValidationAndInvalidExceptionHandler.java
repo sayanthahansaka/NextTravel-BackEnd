@@ -2,7 +2,6 @@ package com.sayantha.gs.exception;
 
 
 import com.sayantha.gs.util.ResponseUtil;
-import com.sayantha.hs.exception.InvalidException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.ObjectError;
@@ -24,10 +23,5 @@ public class ValidationAndInvalidExceptionHandler {
                 .collect(Collectors.joining(", "));
 
         return new ResponseEntity<>(new ResponseUtil(400, errorMessage, null), HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(InvalidException.class)
-    public ResponseEntity<ResponseUtil> handleInvalidException(InvalidException ex) {
-        return new ResponseEntity<>(new ResponseUtil(400, ex.getMessage(), null), HttpStatus.BAD_REQUEST);
     }
 }

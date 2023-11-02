@@ -2,22 +2,27 @@ package com.sayantha.hs.controller;
 
 import com.sayantha.hs.dto.HotelDTO;
 import com.sayantha.hs.exception.InvalidException;
+import com.sayantha.hs.exception.NotFoundException;
+import com.sayantha.hs.repo.HotelRepo;
 import com.sayantha.hs.service.HotelService;
 import com.sayantha.hs.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 @RequestMapping("api/v1/hotel")
-@CrossOrigin(origins = "http://127.0.0.1:5502", allowedHeaders = "*")
+@CrossOrigin(origins = "http://127.0.0.1:5500", allowedHeaders = "*")
+
 public class HotelDetailsController {
     @Autowired
     private HotelService hotelService;
+
+    @Autowired
+    private HotelRepo hotelRepo;
 
     @GetMapping("/hotelsget")
     public ResponseUtil getAllHotel() {
@@ -67,4 +72,15 @@ public class HotelDetailsController {
         return new ResponseUtil(200, "Search", hotelService.searchHotelByID(id));
     }
 
+    @GetMapping("/nextHotelID")
+    public ResponseEntity<Integer> getNextHotelID() {
+        Integer currentMaxID = hotelRepo.findMaxID();
+        Integer nextID = (currentMaxID == null) ? 1 : currentMaxID + 1;
+        return ResponseEntity.ok(nextID);
+    }
+
+    @GetMapping(path = "/getHotelPckageID", params = "packageID", produces = MediaType.APPLICATION_JSON_VALUE)
+    public NotFoundException getHotelByPackageID(@RequestParam("packageID") Integer packageID){
+        return hotelService.findHotelsByPackagingID(packageID);
+    }
 }
