@@ -11,14 +11,17 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Entity
-public class Packages {
+public class PackagesDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer packageId;
+    private String package_id;
+
     private String packageCategory;
+
+
     @ElementCollection
-    private List<String> hotelCategory;
-    @ElementCollection
-    private List<String> vehicleCategory;
+    private List<String> vehical_Category;
+
+    @ElementCollection//we cant use many to one
+    private List<String> hotel_Category;
 
 }

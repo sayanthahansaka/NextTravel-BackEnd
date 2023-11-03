@@ -50,5 +50,12 @@
       <jdbc-url>jdbc:mysql://localhost:3306/next_travel_package_service</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="next_travel_packagesA_service@localhost" uuid="2b03ff4d-385f-4fb8-9828-850778a9d38e">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/next_travel_packagesA_service</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

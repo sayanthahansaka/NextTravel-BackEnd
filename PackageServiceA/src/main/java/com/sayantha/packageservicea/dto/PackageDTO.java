@@ -8,16 +8,21 @@ import lombok.ToString;
 
 import javax.persistence.ElementCollection;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @ToString
-public class PackageDTO {
+public class PackageDTO implements Serializable,Super_dto {
 
-    private int packageId;
+    private String package_id;
+
     private String packageCategory;
-    private String hotelCategory;
-    private int vehicleCategory;
+
+    private  String vehical_Category;
+
+
+    private String hotel_Category;
 
 }

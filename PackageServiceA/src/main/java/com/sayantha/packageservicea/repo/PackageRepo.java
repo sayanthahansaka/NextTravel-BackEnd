@@ -1,18 +1,16 @@
 package com.sayantha.packageservicea.repo;
 
 
-import com.sayantha.packageservicea.entity.Packages;
+import com.sayantha.packageservicea.entity.PackagesDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface PackageRepo extends JpaRepository<Packages, Integer> {
-    Optional<Packages> findByPackageCategory(String category);
+public interface PackageRepo extends JpaRepository<PackagesDetails, String> {
+//    @Query("SELECT p.package_id from Packages p order by p.package_id DESC ")
+//    List<String> getAllID();
 
-    @Query("SELECT p.packageId from Packages p order by p.packageId DESC ")
-    List<Integer> getAllID();
+    Optional<PackagesDetails> findByPackageCategory(String category);
 }

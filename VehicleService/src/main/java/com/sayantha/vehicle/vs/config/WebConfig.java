@@ -1,4 +1,4 @@
-package com.sayantha.hs.config;
+package com.sayantha.vehicle.vs.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

@@ -1,15 +1,17 @@
 package com.sayantha.packageservicea.interfaces;
 
-import com.sayantha.packageservicea.util.ResponseUtil;
+import com.sayantha.packageservicea.util.Response;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 
 @FeignClient("vehicle-service")
-public interface VehicleInterface {
 
-    @GetMapping(path = "/id/{id}",params = "packageID", produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseUtil searchVehicleByID(@RequestParam("packageID") Integer packageID);
+public interface VehicleInterface {
+    @DeleteMapping(path = "/deleteAll", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Response> deleteAllVehicles(@RequestBody List<String> vehiclesIDList);
 }
